@@ -1,0 +1,11 @@
+Domain,Status,RTT_stats,PacketLoss_percent,Ping_time
+google.com,Success,164.956/166.157/167.585/1.114,0,3199
+microsoft.com,Failed,N/A,100,5097
+github.com,Success,93.899/96.569/99.597/2.461,0,3134
+stackoverflow.com,Success,48.027/50.084/51.671/1.339,0,3083
+reddit.com,Success,83.030/84.832/86.180/1.141,0,3132
+amazon.com,Failed,N/A,100,5082
+wikipedia.org,Success,142.688/149.496/154.609/4.772,0,3172
+cloudflare.com,Success,48.881/50.536/53.688/1.857,0,3071
+apple.com,Success,65.304/66.813/69.226/1.635,0,3087
+youtube.com,Success,164.727/166.887/169.825/1.856,0,3194
