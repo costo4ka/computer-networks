@@ -1,0 +1,38 @@
+services:
+
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: vacancies_db
+      MYSQL_USER: parser
+      MYSQL_PASSWORD: parserpass
+    ports:
+      - "33060:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uparser", "-pparserpass"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  app:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_USER: parser
+      MYSQL_PASSWORD: parserpass
+      MYSQL_DATABASE: vacancies_db
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  mysql_data:
